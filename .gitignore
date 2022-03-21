@@ -1,8 +1,11 @@
 API/bin
 API/obj
 API/Data
+API/Properties
+
 .vscode
 DotnetStoreWithRedux.sln
 .DS_Store
+
 appsettings.Development.json
 appsettings.json
