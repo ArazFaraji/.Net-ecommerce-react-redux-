@@ -3,3 +3,4 @@ API/obj
 API/Data
 .vscode
 DotnetStoreWithRedux.sln
+.DS_Store
