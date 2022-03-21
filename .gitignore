@@ -1,3 +1,4 @@
-bin/
-obj/
-Data/
+API/bin/
+API/obj/
+API/Data/
+.vscode/
