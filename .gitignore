@@ -9,3 +9,5 @@ DotnetStoreWithRedux.sln
 
 appsettings.Development.json
 appsettings.json
+
+* .db
