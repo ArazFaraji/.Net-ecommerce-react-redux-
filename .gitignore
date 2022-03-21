@@ -10,4 +10,6 @@ DotnetStoreWithRedux.sln
 appsettings.Development.json
 appsettings.json
 
-*.db
+store.db
+store.db-shm
+store.db-wal
