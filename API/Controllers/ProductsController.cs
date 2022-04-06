@@ -13,6 +13,8 @@ namespace API.Controllers
     [Route("api/[controller]")]
     public class ProductsController : ControllerBase
     {
+
+        // common best practice is to use underscore for a private read only field
         private readonly StoreContext _context;
         public ProductsController(StoreContext context)
         {
