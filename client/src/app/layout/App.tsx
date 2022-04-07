@@ -1,38 +1,36 @@
-import { Typography } from "@mui/material";
-import { useEffect, useState } from "react";
+import { Container, createTheme, CssBaseline, ThemeProvider } from "@mui/material";
+import { useState } from "react";
 import Catalog from "../../features/catalog/Catalog";
-import { Product } from "../models/product";
+import Header from "./Header";
 
 const products = []
 
 function App() {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [darkMode, setDarkMode] = useState(false);
+  const paletteType = darkMode ? 'dark' : 'light';
+  const theme = createTheme({
+    palette: {
+      mode: paletteType,
+      background: {
+        default: paletteType === 'light' ? '#eaeaea' : '#121212'
+      }
+    }
+  });
 
-  // adding ,[] at the end as a dependecy ensure it is only called once as opposed to everytime the component renders or re-renders.
-  useEffect(() => {
-    fetch("http://localhost:5000/api/products")
-      .then(response => response.json())
-      .then(data => setProducts(data))
-  }, [])
-
-  // ...products is a spread operator, pulls in existing state (products array) and it spreads it into a new array that is being created with addProduct. 
-  function addProduct() {
-    setProducts(prevState => [...products, 
-      {
-        id: prevState.length + 101,
-        name: 'product ' + (prevState.length + 1), 
-        price: (prevState.length * 100) + 100,
-        brand: 'some brand',
-        description: 'some description',
-        pictureUrl: 'http//picsum.photos/200'
-      }])
+  function handleThemeChange() {
+    setDarkMode(!darkMode);
   }
+  
 
   return (
-    <>
-      <Typography variant='h1'>King Clothing</Typography>
-      <Catalog products={products} addProduct={addProduct}/>
-    </>
+    <ThemeProvider theme={theme}>
+    {/* CssBaseLine removes default browser CSS styles */}
+      <CssBaseline />
+      <Header darkMode={darkMode} handleThemeChange={handleThemeChange}/>
+      <Container>
+        <Catalog/>
+      </Container>
+    </ThemeProvider>
   );
 }
 
